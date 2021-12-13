@@ -16,7 +16,7 @@ class Media (models.Model):
     mediaID = models.AutoField(primary_key=True)
     mediaTitle = models.CharField(max_length=50)
     mediaRelease = models.DateField()
-    categoires = models.ManyToManyField(CategoryGenre)
+    categories = models.ManyToManyField(CategoryGenre)
 
 class Book (Media):
     author = models.CharField(max_length=50)
@@ -101,4 +101,3 @@ class Rates (models.Model):
     rateReviewID = ForeignKey(Review, on_delete=CASCADE)
     rateMediaID = ForeignKey(Media, on_delete=CASCADE)
 
-    

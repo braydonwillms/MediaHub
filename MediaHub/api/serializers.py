@@ -1,3 +1,4 @@
+from django.db import models as fields
 from . import models
 from rest_framework import serializers
 
@@ -6,10 +7,10 @@ class UserSerializer(serializers.ModelSerializer):
 		model = models.User
 		fields = '__all__'
 
-class UserUsernameSerializer(serializers.ModelSerializer):
+class UserNameSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = models.User
-		fields = ['userID']
+		fields = ['userName']
 
 class UserCredentialSerializer(serializers.ModelSerializer):
 	class Meta:
