@@ -1,4 +1,5 @@
 MediaHub/env
-MediaHub/MediaHub/__pycache__
-MediaHub/api/__pycache__
+__pycache__/
+.vs/
 MediaHub/db.sqlite3
+MediaHub/api/migrations/*

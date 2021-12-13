@@ -72,7 +72,7 @@ class Admin (models.Model):
     adminLastName = models.CharField(max_length=30)
     adminPassword = models.CharField(max_length=30)
     adminManagesUsers = models.ManyToManyField(User)
-    adminManagesUsers = models.ManyToManyField(Media)
+    adminManagesMedia = models.ManyToManyField(Media)
 
 class Playlist (models.Model):
     playListUser = ForeignKey(User, on_delete=CASCADE)

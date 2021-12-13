@@ -58,8 +58,8 @@ class MovieSerializer(serializers.ModelSerializer):
 
 class VideoGameSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.VideoGame
-		fields = '__all__'
+		model = models.VideoGameConsole
+		fields = ['videoGameConsoleMediaID']
 
 class VideoGameConsoleSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -68,8 +68,8 @@ class VideoGameConsoleSerializer(serializers.ModelSerializer):
 
 class ShowSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.Show
-		fields = '__all__'
+		model = models.ShowSeasons
+		fields = ['showSeasonMediaID']
 
 class ShowSeasonsSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -78,7 +78,7 @@ class ShowSeasonsSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.CatgegoryGenre
+		model = models.CategoryGenre
 		fields = '__all__'
 
 class PlatformSerializer(serializers.ModelSerializer):
@@ -116,19 +116,19 @@ class PlaylistSerializer(serializers.ModelSerializer):
 		model = models.Playlist
 		fields = '__all__'
 
-class PermissionsSerializer(serializers.ModelSerializer):
+class PermissionSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.Permissions
+		model = models.Permission
 		fields = '__all__'
 
 class FriendsSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.Friends
-		fields = '__all__'
+		model = models.User
+		fields = ['userID', 'friends']
 
 class SuggestionSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.Suggests
+		model = models.Suggestions
 		fields = '__all__'
 
 class SharesSerializer(serializers.ModelSerializer):
@@ -136,12 +136,7 @@ class SharesSerializer(serializers.ModelSerializer):
 		model = models.Shares
 		fields = '__all__'
 
-class RatingSerializer(serializers.ModelSerializer):
+class RatesSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.Rating
-		fields = '__all__'
-
-class OwnsSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = models.Owns
+		model = models.Rates
 		fields = '__all__'
