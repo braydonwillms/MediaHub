@@ -1,3 +1,4 @@
+from django.db import models
 from . import models
 from rest_framework import serializers
 
@@ -6,10 +7,10 @@ class UserSerializer(serializers.ModelSerializer):
 		model = models.User
 		fields = '__all__'
 
-class UserUsernameSerializer(serializers.ModelSerializer):
+class UserDetailsSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = models.User
-		fields = ['userID']
+		fields = ['userName', 'userUsesPlatform', 'friends']
 
 class UserCredentialSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -58,8 +59,8 @@ class MovieSerializer(serializers.ModelSerializer):
 
 class VideoGameSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.VideoGameConsole
-		fields = ['videoGameConsoleMediaID']
+		model = models.VideoGame
+		fields = '__all__'
 
 class VideoGameConsoleSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -68,8 +69,8 @@ class VideoGameConsoleSerializer(serializers.ModelSerializer):
 
 class ShowSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.ShowSeasons
-		fields = ['showSeasonMediaID']
+		model = models.Show
+		fields = '__all__'
 
 class ShowSeasonsSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -139,4 +140,9 @@ class SharesSerializer(serializers.ModelSerializer):
 class RatesSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = models.Rates
+		fields = '__all__'
+
+class OwnsSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = models.Owns
 		fields = '__all__'
