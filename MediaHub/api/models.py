@@ -49,7 +49,7 @@ class Physical (Platform):
     physicalDescription = TextField()
 
 class Device (Platform):
-    deviceDescriptionl = TextField()
+    deviceDescription = TextField()
 
 class Website (Platform):
     websiteDescription = URLField()
@@ -87,7 +87,8 @@ class Playlist (models.Model):
     class META:
         UniqueConstraint(fields=['playListUserID', 'playListName'],name='uniqueUserPlaylist')
 
-class Permission (User):
+class Permission (models.Model):
+    userID = ForeignKey(User, on_delete=CASCADE)
     ratingPerm = BooleanField()
     commentsPerm = BooleanField()
     addMediaPerm = BooleanField()

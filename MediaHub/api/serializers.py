@@ -7,10 +7,10 @@ class UserSerializer(serializers.ModelSerializer):
 		model = models.User
 		fields = '__all__'
 
-class UserNameSerializer(serializers.ModelSerializer):
+class UserDetailsSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = models.User
-		fields = ['userName']
+		fields = ['userName', 'userUsesPlatform', 'friends']
 
 class UserCredentialSerializer(serializers.ModelSerializer):
 	class Meta:

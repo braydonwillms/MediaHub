@@ -50,10 +50,18 @@ class UserDetails(APIView):
 	def get(self, request, userID, format=None):
 		try:
 			user = models.User.objects.get(userID=userID)
-			serializer = UserNameSerializer(user)
+			serializer = UserDetailsSerializer(user)
 			return Response(serializer.data, status=status.HTTP_200_OK)
 		except:
 			return Response(status=status.HTTP_400_BAD_REQUEST)
+
+	def put(self, request, userID, format=None):
+		user = models.User.objects.filter(userID=userID).first()
+		serializer = UserSerializer(user, data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class AddReview(APIView):
 	def post(self, request, format=None):
@@ -146,3 +154,85 @@ class MediaDetails(APIView):
 		media = models.Media.objects.filter(mediaID=mediaID)
 		media.delete()
 		return Response(status=status.HTTP_204_NO_CONTENT)
+
+class AddPhyscial(APIView):
+	def post(self, request, format=None):
+		serializer = PhysicalSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class AddDevice(APIView):
+	def post(self, request, format=None):
+		serializer = DeviceSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class AddWebsite(APIView):
+	def post(self, request, format=None):
+		serializer = WebsiteSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class PlatformDetails(APIView):
+	def delete(self, request, platformID, format=None):
+		platform = models.Platform.objects.filter(platformID=platformID)
+		platform.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
+class AddPlaylist(APIView):
+	def post(self, request, format=None):
+		serializer = PlaylistSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class UserPlaylists(APIView):
+	def get(self, request, playListUser, format=None):
+		playlists = models.Playlist.objects.filter(playListUser=playListUser)
+		serializer = PlaylistSerializer(playlists, many=True)
+		return Response(serializer.data, status=status.HTTP_200_OK)
+
+class PlaylistDetails(APIView):
+	def put(self, request, playListUser, playListName, format=None):
+		playlist = models.Playlist.objects.filter(playListUser=playListUser, playListName=playListName).first()
+		serializer = PlaylistSerializer(playlist, request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+	def delete(self, request, playListUser, playListName, format=None):
+		playlist = models.Playlist.objects.filter(playListUser=playListUser, playListName=playListName).first()
+		playlist.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
+class PermissionDetails(APIView):
+	def get(self, request, userID, format=None):
+		try:
+			perms = models.Permission.objects.get(userID=userID)
+			serializer = PermissionSerializer(perms)
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		except:
+			return Response(status=status.HTTP_400_BAD_REQUEST)
+
+	def post(self, request, userID, format=None):
+		serializer = PermissionSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def put(self, request, userID, format=None):
+		perms = models.Permission.objects.filter(userID=userID).first()
+		serializer = PermissionSerializer(perms, request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)

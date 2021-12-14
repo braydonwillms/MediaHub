@@ -17,4 +17,12 @@ urlpatterns = [
 	path('media/game/', views.AddVideoGame.as_view()),
 	path('media/', views.GetMedia.as_view()),
 	path('media/<int:mediaID>', views.MediaDetails.as_view()),
+	path('platform/physical/', views.AddPhyscial.as_view()),
+	path('platform/device/', views.AddDevice.as_view()),
+	path('platform/website/', views.AddWebsite.as_view()),
+	path('platform/<int:platformID>', views.PlatformDetails.as_view()),
+	path('playlist/', views.AddPlaylist.as_view()),
+	path('playlist/<str:playListUser>', views.UserPlaylists.as_view()),
+	path('playlist/<str:playListUser>/<str:playListName>', views.PlaylistDetails.as_view()),
+	path('permissions/<str:userID>', views.PermissionDetails.as_view()),
 ]
