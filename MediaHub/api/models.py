@@ -108,3 +108,7 @@ class Rates (models.Model):
     rateReviewID = ForeignKey(Review, on_delete=CASCADE)
     rateMediaID = ForeignKey(Media, on_delete=CASCADE)
 
+class Owns (models.Model):
+    ownsUserID = ForeignKey(User, on_delete=CASCADE)
+    ownsPlatformID = ForeignKey(Platform, on_delete=CASCADE)
+    ownsMediaID = ForeignKey(Media, on_delete=CASCADE)

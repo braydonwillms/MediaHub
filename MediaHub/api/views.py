@@ -236,3 +236,75 @@ class PermissionDetails(APIView):
 			serializer.save()
 			return Response(serializer.data, status=status.HTTP_200_OK)
 		return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+class AddSuggestion(APIView):
+	def post(self, request, format=None):
+		serializer = SuggestionSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class SuggestionList(APIView):
+	def get(self, request, userID, format=None):
+		suggestions = models.Suggestions.objects.filter(suggesteeUserID=userID)
+		serializer = SuggestionSerializer(suggestions, many=True)
+		return Response(serializer.data, status=status.HTTP_200_OK)
+
+class SharePlaylist(APIView):
+	def post(self, request, format=None):
+		serializer = SharesSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class AddRating(APIView):
+	def post(self, request, format=None):
+		serializer = RatesSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class RatingDetails(APIView):
+	def put(self, request, id, format=None):
+		rating = models.Rates.objects.filter(id=id).first()
+		serializer = RatesSerializer(rating, data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def delete(self, request, id, format=None):
+		rating = models.Rates.objects.filter(id=id).first()
+		rating.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
+class AddOwnership(APIView):
+	def post(self, request, format=None):
+		serializer = OwnsSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class OwnershipDetails(APIView):
+	def put(self, request, id, format=None):
+		owns = models.Owns.objects.filter(id=id).first()
+		serializer = OwnsSerializer(owns, data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_200_OK)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+	def delete(self, request, id, format=None):
+		owns = models.Owns.objects.filter(id=id).first()
+		owns.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
+
+class PlatformList(APIView):
+	def get(self, request, format=None):
+		platforms = models.Platform.objects.all()
+		serializer = PlatformSerializer(platforms, many=True)
+		return Response(serializer.data, status=status.HTTP_200_OK)

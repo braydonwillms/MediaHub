@@ -141,3 +141,8 @@ class RatesSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = models.Rates
 		fields = '__all__'
+
+class OwnsSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = models.Owns
+		fields = '__all__'
