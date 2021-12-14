@@ -16,7 +16,7 @@ class Media (models.Model):
     mediaID = models.AutoField(primary_key=True)
     mediaTitle = models.CharField(max_length=50)
     mediaRelease = models.DateField()
-    categories = models.ManyToManyField(CategoryGenre)
+    categories = models.ManyToManyField(CategoryGenre, blank=True)
 
 class Book (Media):
     author = models.CharField(max_length=50)
@@ -37,7 +37,7 @@ class ShowSeasons (models.Model):
 class Platform (models.Model):
     platformID = AutoField(primary_key=True)
     platformName = models.CharField(max_length=20)
-    platformHosts = models.ManyToManyField(Media)
+    platformHosts = models.ManyToManyField(Media, blank=True)
 
 class Physical (Platform):
     physicalDescription = TextField()
@@ -60,24 +60,24 @@ class Review (models.Model):
     comment = TextField(default="No Review.")
 
 class User (models.Model):
-    userID = AutoField(primary_key=True)
+    userID = CharField(max_length=50, primary_key=True)
     userName = CharField(max_length=50)
     userPassword = CharField(max_length=30)
-    userUsesPlatform = models.ManyToManyField(Platform)
-    friends = models.ManyToManyField('self')
+    userUsesPlatform = models.ManyToManyField(Platform, blank=True)
+    friends = models.ManyToManyField('self', blank=True)
 
 class Admin (models.Model):
-    adminID = models.AutoField(primary_key=True)
+    adminID = models.CharField(max_length=50, primary_key=True)
     adminFirstName = models.CharField(max_length=30)
     adminLastName = models.CharField(max_length=30)
     adminPassword = models.CharField(max_length=30)
-    adminManagesUsers = models.ManyToManyField(User)
-    adminManagesMedia = models.ManyToManyField(Media)
+    adminManagesUsers = models.ManyToManyField(User, blank=True)
+    adminManagesMedia = models.ManyToManyField(Media, blank=True)
 
 class Playlist (models.Model):
     playListUser = ForeignKey(User, on_delete=CASCADE)
     playListName = CharField(max_length=30)
-    playListContains = models.ManyToManyField(Media)
+    playListContains = models.ManyToManyField(Media, blank=True)
     class META:
         UniqueConstraint(fields=['playListUserID', 'playListName'],name='uniqueUserPlaylist')
 

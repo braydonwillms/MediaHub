@@ -63,13 +63,6 @@ class AddReview(APIView):
 			return Response(serializer.data, status=status.HTTP_200_OK)
 		return Response(serializer.errors, sattus=status.HTTP_400_BAD_REQUEST)
 
-	def put(self, request, format=None):
-		serializer = ReviewSerializer(data=request.data)
-		if serializer.is_valid():
-			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
-		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 class AddCategory(APIView):
 	def post(self, request, format=None):
 		serializer = CategorySerializer(data=request.data)
