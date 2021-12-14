@@ -26,12 +26,18 @@ class Movie (Media):
     medium = models.CharField(max_length=30)
     director = models.CharField(max_length=30)
 
+class VideoGame(Media):
+    pass
+
+class Show(Media):
+    pass
+
 class VideoGameConsole (models.Model):
-    videoGameConsoleMediaID = ForeignKey(Media, on_delete=CASCADE)
+    videoGameConsoleMediaID = ForeignKey(VideoGame, on_delete=CASCADE)
     console = models.CharField(max_length=20)
 
 class ShowSeasons (models.Model):
-    showSeasonMediaID = ForeignKey(Media, on_delete=CASCADE)
+    showSeasonMediaID = ForeignKey(Show, on_delete=CASCADE)
     showSeason = PositiveSmallIntegerField(unique=True)
 
 class Platform (models.Model):

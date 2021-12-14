@@ -1,4 +1,4 @@
-from django.db import models as fields
+from django.db import models
 from . import models
 from rest_framework import serializers
 
@@ -59,8 +59,8 @@ class MovieSerializer(serializers.ModelSerializer):
 
 class VideoGameSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.VideoGameConsole
-		fields = ['videoGameConsoleMediaID']
+		model = models.VideoGame
+		fields = '__all__'
 
 class VideoGameConsoleSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -69,8 +69,8 @@ class VideoGameConsoleSerializer(serializers.ModelSerializer):
 
 class ShowSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = models.ShowSeasons
-		fields = ['showSeasonMediaID']
+		model = models.Show
+		fields = '__all__'
 
 class ShowSeasonsSerializer(serializers.ModelSerializer):
 	class Meta:
