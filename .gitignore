@@ -1,4 +1,4 @@
-MediaHub/env
+env/
 __pycache__/
 .vs/
 MediaHub/db.sqlite3
