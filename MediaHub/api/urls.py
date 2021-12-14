@@ -1,4 +1,36 @@
+from django.urls import path
+
 from . import views
 urlpatterns = [
-		
+	path('admin/', views.AddAdmin.as_view()),
+	path('admin/<str:adminID>', views.AdminDetails.as_view()),
+	path('admin/<str:adminID>/<str:adminPassword>', views.VerifyAdmin.as_view()),
+	path('users/', views.AddUser.as_view()),
+	path('users/<str:userID>', views.UserDetails.as_view()),
+	path('users/<str:userID>/<str:userPassword>', views.VerifyUser.as_view()),
+	path('reviews/', views.AddReview.as_view()),
+	path('reviews/<int:reviewID>', views.EditReview.as_view()),
+	path('category/', views.AddCategory.as_view()),
+	path('media/book/', views.AddBook.as_view()),
+	path('media/movie/', views.AddMovie.as_view()),
+	path('media/show/', views.AddShow.as_view()),
+	path('media/game/', views.AddVideoGame.as_view()),
+	path('media/', views.GetMedia.as_view()),
+	path('media/<int:mediaID>', views.MediaDetails.as_view()),
+	path('platform/', views.PlatformList.as_view()),
+	path('platform/physical/', views.AddPhyscial.as_view()),
+	path('platform/device/', views.AddDevice.as_view()),
+	path('platform/website/', views.AddWebsite.as_view()),
+	path('platform/<int:platformID>', views.PlatformDetails.as_view()),
+	path('playlist/', views.AddPlaylist.as_view()),
+	path('playlist/<str:playListUser>', views.UserPlaylists.as_view()),
+	path('playlist/<str:playListUser>/<str:playListName>', views.PlaylistDetails.as_view()),
+	path('permissions/<str:userID>', views.PermissionDetails.as_view()),
+	path('suggestions/', views.AddSuggestion.as_view()),
+	path('suggestions/<str:userID>', views.SuggestionList.as_view()),
+	path('share/', views.SharePlaylist.as_view()),
+	path('rating/', views.AddRating.as_view()),
+	path('rating/<int:id>', views.RatingDetails.as_view()),
+	path('owns/', views.AddOwnership.as_view()),
+	path('owns/<int:id>', views.OwnershipDetails.as_view()),
 ]

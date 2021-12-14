@@ -16,7 +16,7 @@ class Media (models.Model):
     mediaID = models.AutoField(primary_key=True)
     mediaTitle = models.CharField(max_length=50)
     mediaRelease = models.DateField()
-    categoires = models.ManyToManyField(CategoryGenre)
+    categories = models.ManyToManyField(CategoryGenre, blank=True)
 
 class Book (Media):
     author = models.CharField(max_length=50)
@@ -26,24 +26,30 @@ class Movie (Media):
     medium = models.CharField(max_length=30)
     director = models.CharField(max_length=30)
 
+class VideoGame(Media):
+    pass
+
+class Show(Media):
+    pass
+
 class VideoGameConsole (models.Model):
-    videoGameConsoleMediaID = ForeignKey(Media, on_delete=CASCADE)
+    videoGameConsoleMediaID = ForeignKey(VideoGame, on_delete=CASCADE)
     console = models.CharField(max_length=20)
 
 class ShowSeasons (models.Model):
-    showSeasonMediaID = ForeignKey(Media, on_delete=CASCADE)
+    showSeasonMediaID = ForeignKey(Show, on_delete=CASCADE)
     showSeason = PositiveSmallIntegerField(unique=True)
 
 class Platform (models.Model):
     platformID = AutoField(primary_key=True)
     platformName = models.CharField(max_length=20)
-    platformHosts = models.ManyToManyField(Media)
+    platformHosts = models.ManyToManyField(Media, blank=True)
 
 class Physical (Platform):
     physicalDescription = TextField()
 
 class Device (Platform):
-    deviceDescriptionl = TextField()
+    deviceDescription = TextField()
 
 class Website (Platform):
     websiteDescription = URLField()
@@ -60,28 +66,29 @@ class Review (models.Model):
     comment = TextField(default="No Review.")
 
 class User (models.Model):
-    userID = AutoField(primary_key=True)
+    userID = CharField(max_length=50, primary_key=True)
     userName = CharField(max_length=50)
     userPassword = CharField(max_length=30)
-    userUsesPlatform = models.ManyToManyField(Platform)
-    friends = models.ManyToManyField('self')
+    userUsesPlatform = models.ManyToManyField(Platform, blank=True)
+    friends = models.ManyToManyField('self', blank=True)
 
 class Admin (models.Model):
-    adminID = models.AutoField(primary_key=True)
+    adminID = models.CharField(max_length=50, primary_key=True)
     adminFirstName = models.CharField(max_length=30)
     adminLastName = models.CharField(max_length=30)
     adminPassword = models.CharField(max_length=30)
-    adminManagesUsers = models.ManyToManyField(User)
-    adminManagesMedia = models.ManyToManyField(Media)
+    adminManagesUsers = models.ManyToManyField(User, blank=True)
+    adminManagesMedia = models.ManyToManyField(Media, blank=True)
 
 class Playlist (models.Model):
     playListUser = ForeignKey(User, on_delete=CASCADE)
     playListName = CharField(max_length=30)
-    playListContains = models.ManyToManyField(Media)
+    playListContains = models.ManyToManyField(Media, blank=True)
     class META:
         UniqueConstraint(fields=['playListUserID', 'playListName'],name='uniqueUserPlaylist')
 
-class Permission (User):
+class Permission (models.Model):
+    userID = ForeignKey(User, on_delete=CASCADE)
     ratingPerm = BooleanField()
     commentsPerm = BooleanField()
     addMediaPerm = BooleanField()
@@ -101,4 +108,7 @@ class Rates (models.Model):
     rateReviewID = ForeignKey(Review, on_delete=CASCADE)
     rateMediaID = ForeignKey(Media, on_delete=CASCADE)
 
-    
+class Owns (models.Model):
+    ownsUserID = ForeignKey(User, on_delete=CASCADE)
+    ownsPlatformID = ForeignKey(Platform, on_delete=CASCADE)
+    ownsMediaID = ForeignKey(Media, on_delete=CASCADE)
