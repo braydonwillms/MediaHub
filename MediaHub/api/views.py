@@ -68,7 +68,7 @@ class AddReview(APIView):
 		serializer = ReviewSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, sattus=status.HTTP_400_BAD_REQUEST)
 
 class EditReview(APIView):
@@ -85,7 +85,7 @@ class AddCategory(APIView):
 		serializer = CategorySerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class AddBook(APIView):
@@ -93,7 +93,7 @@ class AddBook(APIView):
 		serializer = BookSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class AddMovie(APIView):
@@ -101,7 +101,7 @@ class AddMovie(APIView):
 		serializer = MovieSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class AddVideoGame(APIView):
@@ -109,7 +109,7 @@ class AddVideoGame(APIView):
 		serializer = VideoGameSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class AddShow(APIView):
@@ -117,7 +117,7 @@ class AddShow(APIView):
 		serializer = ShowSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class GetMedia(APIView):
@@ -160,7 +160,7 @@ class AddPhyscial(APIView):
 		serializer = PhysicalSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class AddDevice(APIView):
@@ -168,7 +168,7 @@ class AddDevice(APIView):
 		serializer = DeviceSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class AddWebsite(APIView):
@@ -176,7 +176,7 @@ class AddWebsite(APIView):
 		serializer = WebsiteSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class PlatformDetails(APIView):
@@ -190,7 +190,7 @@ class AddPlaylist(APIView):
 		serializer = PlaylistSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class UserPlaylists(APIView):
@@ -226,7 +226,7 @@ class PermissionDetails(APIView):
 		serializer = PermissionSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 	def put(self, request, userID, format=None):
@@ -242,7 +242,7 @@ class AddSuggestion(APIView):
 		serializer = SuggestionSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class SuggestionList(APIView):
@@ -256,7 +256,7 @@ class SharePlaylist(APIView):
 		serializer = SharesSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class AddRating(APIView):
@@ -264,7 +264,7 @@ class AddRating(APIView):
 		serializer = RatesSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class RatingDetails(APIView):
@@ -286,7 +286,7 @@ class AddOwnership(APIView):
 		serializer = OwnsSerializer(data=request.data)
 		if serializer.is_valid():
 			serializer.save()
-			return Response(serializer.data, status=status.HTTP_200_OK)
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class OwnershipDetails(APIView):
