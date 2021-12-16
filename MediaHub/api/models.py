@@ -18,6 +18,9 @@ class Media (models.Model):
     mediaRelease = models.DateField()
     categories = models.ManyToManyField(CategoryGenre, blank=True)
 
+    def __str__ (self):
+        return self.mediaTitle
+
 class Book (Media):
     author = models.CharField(max_length=50)
     ISBN = models.CharField(max_length=13)

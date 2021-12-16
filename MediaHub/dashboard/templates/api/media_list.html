@@ -6,7 +6,7 @@
   <ul>
     {% for media in media_list %}
       <li>
-        ({{ media.mediaTitle }})
+        {{ media.mediaTitle }},{{ media.mediaRelease}}
       </li>
     {% endfor %}
   </ul>

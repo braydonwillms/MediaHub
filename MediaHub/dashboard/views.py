@@ -12,7 +12,7 @@ def addMedia(request):
     return render(request, 'dashboard/addMedia.html', context)
 
 class viewMedia(generic.ListView):
-    model = Movie
+    model = Media
 
 
 # def viewMedia(request):
