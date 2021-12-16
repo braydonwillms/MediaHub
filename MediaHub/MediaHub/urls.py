@@ -23,5 +23,6 @@ urlpatterns = [
 	path('api/', include('api.urls')),
 	path('admin/', admin.site.urls),
     path('home/',include('frontend.urls')),
-    path('', RedirectView.as_view(url='catalog/'))
+    path('dashboard/', include('dashboard.urls')),
+    path('', RedirectView.as_view(url='home/'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
