@@ -39,3 +39,21 @@ def dashboard(request):
 def logout(request):
 	request.session["username"] = ""
 	return redirect(index)
+
+def register(request):
+	if request.method == 'GET':
+		context = {"register_form":RegisterForm()}
+		return render(request, 'register.html', context)
+	if request.method == 'POST':
+		register_form = RegisterForm(request.POST)
+		if register_form.is_valid():
+			details = dict()
+			details["userID"] = register_form["username"].value()
+			details["userName"] = register_form["name"].value()
+			details["userPassword"] = register_form["password"].value()
+			r = requests.post(URL + "api/users/", json=details)
+			if r.status_code == 201:
+				request.session["username"] = register_form["username"].value()
+				return redirect(dashboard)
+		return redirect(register)
+	return redirect(register)
