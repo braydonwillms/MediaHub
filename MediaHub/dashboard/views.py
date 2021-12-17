@@ -19,6 +19,9 @@ def manageBooks(request):
 def manageShows(request):
     return render(request, 'dashboard/dashboardManageShows.html') 
 
+def manageVideoGames(request):
+    return render(request, 'dashboard/dashboardManageVideoGames.html') 
+
 def sucessAdd(request):
     return render(request, 'dashboard/sucess.html')
     
@@ -42,6 +45,13 @@ def addShow(request):
         form.save()
         return HttpResponseRedirect('sucess/')
     return render(request, 'dashboard/addShow.html', {'form': form})
+
+def addVideoGame(request):
+    form = addVideoGameForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('sucess/')
+    return render(request, 'dashboard/addVideoGame.html', {'form': form})
 
 class viewMedia(generic.ListView):
     model = Media

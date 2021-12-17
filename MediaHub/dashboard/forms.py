@@ -15,3 +15,8 @@ class addShowForm(ModelForm):
     class Meta:
         model = Show
         fields = ['mediaTitle', 'mediaRelease']
+
+class addVideoGameForm(ModelForm):
+    class Meta:
+        model = VideoGame
+        fields = ['mediaTitle', 'mediaRelease']
