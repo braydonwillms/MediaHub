@@ -20,9 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-	path('', include('frontend.urls')),
-	path('api/', include('api.urls')),
-	path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+    path('admin/', admin.site.urls),
     path('home/',include('frontend.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('', RedirectView.as_view(url='home/'))

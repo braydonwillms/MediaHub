@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from api.models import *
+import frontend.views
 from .forms import *
 
 # Create your views here.
 def dashboard(request):
-    context = {}
-    return render(request, 'dashboard/dashboard.html', context)
+    return redirect(frontend.views.dashboard)
 
 def addMovie(request):
     if request.method == "POST":
