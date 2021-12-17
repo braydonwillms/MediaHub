@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import generic
@@ -38,3 +38,20 @@ def addPlaylist(request):
         form.save()
         return HttpResponseRedirect('/dashboard/viewPlaylists')
     return render(request, 'dashboard/addPlaylist.html', {'form':form})
+
+def editPlaylist(request):
+    instance = get_object_or_404(Playlist, playListUser=request.POST["playListUser"], playListName=request.POST["playListName"])
+    form = editPlaylistForm(request.POST or None, instance=instance)
+    form.fields["playListUser"].initial = request.POST["playListUser"]
+    form.fields["playListName"].initial = request.POST["playListName"]
+    return render(request, 'dashboard/editPlaylist.html', {'form':form})
+
+def updatePlaylist(request):
+    instance = get_object_or_404(Playlist, playListUser=request.POST["playListUser"], playListName=request.POST["playListName"])
+    form = editPlaylistForm(request.POST or None, instance=instance)
+    form.fields["playListUser"].initial = request.POST["playListUser"]
+    form.fields["playListName"].initial = request.POST["playListName"]
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/dashboard/viewPlaylists')
+    return render(request, 'dashboard/editPlaylist.html', {'form':form})

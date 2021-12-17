@@ -7,5 +7,7 @@ urlpatterns = [
     path('viewMedia/', views.viewMedia.as_view(), name='viewMedia'),
     path('viewPlaylists/', views.viewPlaylists.as_view(), name='viewPlaylists'),
     path('addPlaylist/', views.addPlaylist, name='addPlaylist'),
-    path('sucess/', views.sucessAdd, name='sucess')
+    path('sucess/', views.sucessAdd, name='sucess'),
+    path('editPlaylist/', views.editPlaylist, name='editPlaylist'),
+    path('updatePlaylist/', views.updatePlaylist, name='updatePlaylist'),
 ]

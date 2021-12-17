@@ -87,6 +87,9 @@ class User (models.Model):
     userUsesPlatform = models.ManyToManyField(Platform, blank=True)
     friends = models.ManyToManyField('self', blank=True)
 
+    def __str__(self):
+        return self.userID
+
 class Admin (models.Model):
     adminID = models.CharField(max_length=50, primary_key=True)
     adminFirstName = models.CharField(max_length=30)
