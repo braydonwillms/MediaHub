@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Media List</h1>
+  {% if playlist_list %}
+  <ul>
+    {% for playlist in playlist_list %}
+      <li>
+        {{ playlist.playListName }}:
+		<ul>
+		{% for media in playlist.playListContains.all %}
+			<li>
+				{{ media.mediaTitle }}
+			</li>
+		{% endfor %}
+		</ul>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>You do not have any playlists.</p>
+  {% endif %}
+{% endblock %}

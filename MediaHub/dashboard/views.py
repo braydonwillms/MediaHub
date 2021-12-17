@@ -15,28 +15,26 @@ def sucessAdd(request):
     return render(request, 'dashboard/sucess.html', context)
 
 def addMovie(request):
-    if request.method == "POST":
-        form = addMovieForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-      form = addMovieForm()
-    return render(request, 'dashboard/addMovie.html', {'form': form})
-    
-def addMovie(request):
     form = addMovieForm(request.POST or None)
     if form.is_valid():
-        obj = form.save(commit=False)
-        #do stuff here if you need to
-        obj.save()
-        form = addMovieForm()
+        form.save()
         return HttpResponseRedirect('/dashboard/sucess')
     return render(request, 'dashboard/addMovie.html', {'form': form})
 
 class viewMedia(generic.ListView):
     model = Media
 
+class viewPlaylists(generic.ListView):
+    model = Playlist
 
-# def viewMedia(request):
-#     context = {}
-#     return render(request, 'dashboard/viewMedia.html', context)
+    def get_queryset(self):
+        username = self.request.session["username"]
+        return Playlist.objects.filter(playListUser=username)
+
+def addPlaylist(request):
+    form = addPlaylistForm(request.POST or None)
+    form.fields["playListUser"].initial = request.session["username"]
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('/dashboard/viewPlaylists')
+    return render(request, 'dashboard/addPlaylist.html', {'form':form})
