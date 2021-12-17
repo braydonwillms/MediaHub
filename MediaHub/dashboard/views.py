@@ -8,7 +8,7 @@ from .forms import *
 
 # Create your views here.
 def dashboard(request):
-    return redirect(request ,frontend.views.dashboard, name='dashboard')
+    return redirect(frontend.views.dashboard)
 
 def manageMovies(request):
     return render(request, 'dashboard/dashboardManageMovies.html') 
@@ -29,28 +29,28 @@ def addMovie(request):
     form = addMovieForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('sucess/')
+        return redirect(sucessAdd)
     return render(request, 'dashboard/addMovie.html', {'form': form})
 
 def addBook(request):
     form = addBookForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('sucess/')
+        return redirect(sucessAdd)
     return render(request, 'dashboard/addBook.html', {'form': form})
 
 def addShow(request):
     form = addShowForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('sucess/')
+        return redirect(sucessAdd)
     return render(request, 'dashboard/addShow.html', {'form': form})
 
 def addVideoGame(request):
     form = addVideoGameForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('sucess/')
+        return redirect(sucessAdd)
     return render(request, 'dashboard/addVideoGame.html', {'form': form})
 
 class viewMedia(generic.ListView):
