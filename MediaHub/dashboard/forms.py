@@ -6,3 +6,12 @@ class addMovieForm(ModelForm):
         model = Movie
         fields = ['mediaTitle','mediaRelease','categories','medium','director']
     
+class addBookForm(ModelForm):
+    class Meta:
+        model = Book
+        fields = ['mediaTitle','mediaRelease', 'categories', 'author', 'ISBN']
+
+class addShowForm(ModelForm):
+    class Meta:
+        model = Show
+        fields = ['mediaTitle', 'mediaRelease']

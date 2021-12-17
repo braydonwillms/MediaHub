@@ -8,35 +8,41 @@ from .forms import *
 
 # Create your views here.
 def dashboard(request):
-    return redirect(frontend.views.dashboard)
+    return redirect(request ,frontend.views.dashboard)
+
+def manageMovies(request):
+    return render(request, 'dashboard/dashboardManageMovies.html') 
+
+def manageBooks(request):
+    return render(request, 'dashboard/dashboardManageBooks.html')
+
+def manageShows(request):
+    return render(request, 'dashboard/dashboardManageShows.html') 
 
 def sucessAdd(request):
-    context = {}
-    return render(request, 'dashboard/sucess.html', context)
-
-def addMovie(request):
-    if request.method == "POST":
-        form = addMovieForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-      form = addMovieForm()
-    return render(request, 'dashboard/addMovie.html', {'form': form})
+    return render(request, 'dashboard/sucess.html')
     
 def addMovie(request):
     form = addMovieForm(request.POST or None)
     if form.is_valid():
-        obj = form.save(commit=False)
-        #do stuff here if you need to
-        obj.save()
-        form = addMovieForm()
-        return HttpResponseRedirect('/dashboard/sucess')
+        form.save()
+        return HttpResponseRedirect('sucess/')
     return render(request, 'dashboard/addMovie.html', {'form': form})
+
+def addBook(request):
+    form = addBookForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('sucess/')
+    return render(request, 'dashboard/addBook.html', {'form': form})
+
+def addShow(request):
+    form = addShowForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect('sucess/')
+    return render(request, 'dashboard/addShow.html', {'form': form})
 
 class viewMedia(generic.ListView):
     model = Media
 
-
-# def viewMedia(request):
-#     context = {}
-#     return render(request, 'dashboard/viewMedia.html', context)
