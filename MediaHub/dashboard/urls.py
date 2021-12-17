@@ -19,5 +19,7 @@ urlpatterns = [
     path('sucess/', views.sucessAdd, name='sucess'),
     path('editPlaylist/', views.editPlaylist, name='editPlaylist'),
     path('updatePlaylist/', views.updatePlaylist, name='updatePlaylist'),
-    path('addMovie/sucess/', views.sucessAdd, name='sucess')
+    path('addMovie/sucess/', views.sucessAdd, name='sucess'),
+    path('deleteMovie/', views.deleteMovie, name='deleteMovie'),
+    path('delete-movie/ <mediaID>', views.delete_movie, name='delete-movie')
 ]
