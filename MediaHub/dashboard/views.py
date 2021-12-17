@@ -56,6 +56,13 @@ def addVideoGame(request):
         return redirect(sucessAdd)
     return render(request, 'dashboard/addVideoGame.html', {'form': form})
 
+def addCategoryGenre(request):
+    form = addCategoryGenreForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(sucessAdd)
+    return render(request, 'dashboard/addCategoryGenre.html', {'form': form})
+
 class viewMedia(generic.ListView):
     model = Media
    

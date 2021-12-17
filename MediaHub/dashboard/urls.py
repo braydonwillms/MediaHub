@@ -12,6 +12,7 @@ urlpatterns = [
     path('addBook/', views.addBook, name='addBook'),
     path('addShow/', views.addShow, name='addShow'),
     path('addVideoGame/', views.addVideoGame, name='addVideoGame'),
+    path('addCategoryGenre', views.addCategoryGenre, name='addCategoryGenre'),
     path('viewMedia/', views.viewMedia.as_view(), name='viewMedia'),
     path('viewPlaylists/', views.viewPlaylists.as_view(), name='viewPlaylists'),
     path('addPlaylist/', views.addPlaylist, name='addPlaylist'),

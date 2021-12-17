@@ -47,3 +47,9 @@ class addVideoGameForm(ModelForm):
         model = VideoGame
         fields = ['mediaTitle', 'mediaRelease']
 
+class addCategoryGenreForm(ModelForm):
+    class Meta:
+        model = CategoryGenre
+        fields = ['categoryGenreID', 'categoryGenreDescription']
+
+
