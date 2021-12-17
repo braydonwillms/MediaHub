@@ -9,7 +9,7 @@ from django.db.models.fields.related import ForeignKey
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 class CategoryGenre(models.Model):
-    categoryGenreID = AutoField(primary_key=True)
+    categoryGenreID = CharField(primary_key=True, max_length=20)
     categoryGenreDescription = TextField()
 
 class Media (models.Model):
@@ -17,6 +17,9 @@ class Media (models.Model):
     mediaTitle = models.CharField(max_length=50)
     mediaRelease = models.DateField()
     categories = models.ManyToManyField(CategoryGenre, blank=True)
+
+    def __str__ (self):
+        return self.mediaTitle
 
 class Book (Media):
     author = models.CharField(max_length=50)

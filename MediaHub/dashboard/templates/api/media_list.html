@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Media List</h1>
+  {% if media_list %}
+  <ul>
+    {% for media in media_list %}
+      <li>
+        {{ media.mediaTitle }},{{ media.mediaRelease}}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no Media in the database.</p>
+  {% endif %}
+{% endblock %}
