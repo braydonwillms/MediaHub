@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('addMovie/', views.addMovie, name='addMovie'),
-    path('viewMedia/', views.viewMedia.as_view(), name='viewMedia')
+    path('viewMedia/', views.viewMedia.as_view(), name='viewMedia'),
+    path('sucess/', views.sucessAdd, name='sucess')
 ]
