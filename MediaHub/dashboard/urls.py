@@ -12,5 +12,5 @@ urlpatterns = [
     path('addShow/', views.addShow, name='addShow'),
     path('addVideoGame/', views.addVideoGame, name='addVideoGame'),
     path('viewMedia/', views.viewMedia.as_view(), name='viewMedia'),
-    path('sucess/', views.sucessAdd, name='sucess')
+    path('addMovie/sucess/', views.sucessAdd, name='sucess')
 ]

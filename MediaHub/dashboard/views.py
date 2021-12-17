@@ -8,7 +8,7 @@ from .forms import *
 
 # Create your views here.
 def dashboard(request):
-    return redirect(request ,frontend.views.dashboard)
+    return redirect(request ,frontend.views.dashboard, name='dashboard')
 
 def manageMovies(request):
     return render(request, 'dashboard/dashboardManageMovies.html') 
