@@ -7,6 +7,7 @@ urlpatterns = [
     path('manageBooks/', views.manageBooks, name='manageBooks'),
     path('manageShows/', views.manageShows, name='manageShows'),
     path('manageVideoGame/', views.manageVideoGames, name='manageVideoGames'),
+    path('managePlaylists/', views.managePlaylists, name='managePlaylists'),
     path('addMovie/', views.addMovie, name='addMovie'),
     path('addBook/', views.addBook, name='addBook'),
     path('addShow/', views.addShow, name='addShow'),

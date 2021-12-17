@@ -20,7 +20,10 @@ def manageShows(request):
     return render(request, 'dashboard/dashboardManageShows.html') 
 
 def manageVideoGames(request):
-    return render(request, 'dashboard/dashboardManageVideoGames.html') 
+    return render(request, 'dashboard/dashboardManageVideoGames.html')
+
+def managePlaylists(request):
+    return render(request, 'dashboard/dashboardManagePlaylists.html') 
 
 def sucessAdd(request):
     return render(request, 'dashboard/sucess.html')

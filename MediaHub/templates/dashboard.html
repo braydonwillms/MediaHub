@@ -37,15 +37,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <h5>Dashboard</h5>
   </div>
   <div class="w3-bar-block">
-    <a href={% url 'dashboard' %} class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Overview</a>
-    <a href={% url 'viewPlaylists' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-play-circle fa-fw"></i>  Manage Playlists</a>
-    <a href={% url 'addPlaylist' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-play-circle fa-fw"></i>  Create Playlist</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href={% url 'dashboard' %} class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Overview</a>
     <a href={% url 'viewMedia' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-comment fa-fw"></i>  View Media</a>
     <a href={% url 'manageMovies' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-film fa-fw"></i>  Manage Movies</a>
     <a href={% url 'manageBooks' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Manage Books</a>
     <a href={% url 'manageShows' %}  class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>  Manage Shows</a>
     <a href={% url 'manageVideoGames' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-gamepad fa-fw"></i>  Manage Video Games</a>
+    <a href={% url 'managePlaylists' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-play-circle fa-fw"></i>  Manage Playlists</a>
   </div>
 </nav>
 
