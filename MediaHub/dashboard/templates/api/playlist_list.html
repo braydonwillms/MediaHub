@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Media List</h1>
+  {% if playlist_list %}
+  <ul>
+    {% for playlist in playlist_list %}
+      <li>
+	      {{ playlist.playListName }} 
+	      	<form action={% url 'editPlaylist' %} method='post'>
+			{% csrf_token %}
+			<input type="hidden" name='playListUser' value="{{ playlist.playListUser }}">
+			<input type="hidden" name='playListName' value="{{ playlist.playListName }}">
+			<input type="submit" value="Edit">
+		</form>
+		<ul>
+		{% for media in playlist.playListContains.all %}
+			<li>
+				{{ media.mediaTitle }}
+			</li>
+		{% endfor %}
+		</ul>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>You do not have any playlists.</p>
+  {% endif %}
+{% endblock %}

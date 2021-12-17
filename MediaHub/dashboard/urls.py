@@ -12,5 +12,10 @@ urlpatterns = [
     path('addShow/', views.addShow, name='addShow'),
     path('addVideoGame/', views.addVideoGame, name='addVideoGame'),
     path('viewMedia/', views.viewMedia.as_view(), name='viewMedia'),
+    path('viewPlaylists/', views.viewPlaylists.as_view(), name='viewPlaylists'),
+    path('addPlaylist/', views.addPlaylist, name='addPlaylist'),
+    path('sucess/', views.sucessAdd, name='sucess'),
+    path('editPlaylist/', views.editPlaylist, name='editPlaylist'),
+    path('updatePlaylist/', views.updatePlaylist, name='updatePlaylist'),
     path('addMovie/sucess/', views.sucessAdd, name='sucess')
 ]
