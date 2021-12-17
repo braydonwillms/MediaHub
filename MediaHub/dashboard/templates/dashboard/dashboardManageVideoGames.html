@@ -14,7 +14,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <!-- Top container -->
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-  <form action=".">
+  <form action={% url 'logout' %}>
 	  <input class="w3-bar-item w3-right" type="submit" value=Logout>
   </form>
 </div>
@@ -45,6 +45,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href={% url 'manageShows' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>  Manage Shows</a>
     <a href={% url 'manageVideoGames' %} class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-gamepad fa-fw"></i>  Manage Video Games</a>
     <a href={% url 'managePlaylists' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-play-circle fa-fw"></i>  Manage Playlists</a> 
+    <a href={% url 'manageFriends' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Manage Friends</a>
   </div>
 </nav>
 
@@ -86,6 +87,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
     <div class="w3-quarter">
+      <a href={% url 'manageFriends' %} style="text-decoration:none">
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -94,6 +96,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="w3-clear"></div>
         <h4>Manage Friends</h4>
       </div>
+      </a>
     </div>
     <div class="w3-quarter">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
