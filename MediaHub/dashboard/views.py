@@ -20,7 +20,10 @@ def manageShows(request):
     return render(request, 'dashboard/dashboardManageShows.html') 
 
 def manageVideoGames(request):
-    return render(request, 'dashboard/dashboardManageVideoGames.html') 
+    return render(request, 'dashboard/dashboardManageVideoGames.html')
+
+def managePlaylists(request):
+    return render(request, 'dashboard/dashboardManagePlaylists.html') 
 
 def sucessAdd(request):
     return render(request, 'dashboard/sucess.html')
@@ -52,6 +55,13 @@ def addVideoGame(request):
         form.save()
         return redirect(sucessAdd)
     return render(request, 'dashboard/addVideoGame.html', {'form': form})
+
+def addCategoryGenre(request):
+    form = addCategoryGenreForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(sucessAdd)
+    return render(request, 'dashboard/addCategoryGenre.html', {'form': form})
 
 class viewMedia(generic.ListView):
     model = Media

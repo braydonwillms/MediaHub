@@ -43,7 +43,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href={% url 'manageMovies' %} class="w3-bar-item w3-button w3-padding" ><i class="fa fa-film fa-fw"></i>  Manage Movies</a>
     <a href={% url 'manageBooks' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Manage Books</a>
     <a href={% url 'manageShows' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>  Manage Shows</a>
-    <a href={% url 'manageVideoGames' %} class="w3-bar-item w3-button w3-padding  w3-blue"><i class="fa fa-gamepad fa-fw"></i>  Manage Video Games</a>
+    <a href={% url 'manageVideoGames' %} class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-gamepad fa-fw"></i>  Manage Video Games</a>
+    <a href={% url 'managePlaylists' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-play-circle fa-fw"></i>  Manage Playlists</a> 
   </div>
 </nav>
 
@@ -60,8 +61,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-    <a href={% url 'addVideoGame' %}>
+    
     <div class="w3-quarter">
+      <a href={% url 'addVideoGame' %} style="text-decoration:none">
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-gamepad w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -69,8 +71,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <div class="w3-clear"></div>
         <h4>Add Video Game</h4>
       </div>
+      </a>
     </div>
-  </a>
+
 
     <div class="w3-quarter">
       <div class="w3-container w3-blue w3-padding-16">
