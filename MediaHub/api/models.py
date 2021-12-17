@@ -25,9 +25,15 @@ class Book (Media):
     author = models.CharField(max_length=50)
     ISBN = models.CharField(max_length=13)
 
+    def __str__(self):
+        return self.author
+
 class Movie (Media):
     medium = models.CharField(max_length=30)
     director = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.medium
 
 class VideoGame(Media):
     pass
@@ -39,6 +45,9 @@ class VideoGameConsole (models.Model):
     videoGameConsoleMediaID = ForeignKey(VideoGame, on_delete=CASCADE)
     console = models.CharField(max_length=20)
 
+    def __str__(self) -> str:
+        return self.console
+
 class ShowSeasons (models.Model):
     showSeasonMediaID = ForeignKey(Show, on_delete=CASCADE)
     showSeason = PositiveSmallIntegerField(unique=True)
@@ -47,6 +56,9 @@ class Platform (models.Model):
     platformID = AutoField(primary_key=True)
     platformName = models.CharField(max_length=20)
     platformHosts = models.ManyToManyField(Media, blank=True)
+
+    def __str__(self) -> str:
+        return self.platformName
 
 class Physical (Platform):
     physicalDescription = TextField()
@@ -87,8 +99,13 @@ class Playlist (models.Model):
     playListUser = ForeignKey(User, on_delete=CASCADE)
     playListName = CharField(max_length=30)
     playListContains = models.ManyToManyField(Media, blank=True)
+    
+    def __str__(self) -> str:
+        return self.playListName
+        
     class META:
         UniqueConstraint(fields=['playListUserID', 'playListName'],name='uniqueUserPlaylist')
+
 
 class Permission (models.Model):
     userID = ForeignKey(User, on_delete=CASCADE)
