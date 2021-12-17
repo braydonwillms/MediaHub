@@ -23,4 +23,5 @@ urlpatterns = [
     path('addMovie/sucess/', views.sucessAdd, name='sucess'),
     path('addFriend/', views.addFriend, name='addFriend'),
     path('viewFriends/', views.viewFriends.as_view(), name='viewFriends'),
+    path('deleteMedia/ <mediaID>', views.deleteMedia, name='deleteMedia')
 ]

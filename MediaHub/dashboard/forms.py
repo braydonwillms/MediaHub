@@ -1,3 +1,4 @@
+from django.db.models.base import Model
 from django.forms import ModelForm, HiddenInput, CheckboxSelectMultiple
 from django import forms
 from api.models import *
@@ -33,6 +34,7 @@ class editPlaylistForm(ModelForm):
             "playListContains": "Playlist Items"
         }
     
+
 class addBookForm(ModelForm):
     class Meta:
         model = Book

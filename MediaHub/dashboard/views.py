@@ -125,3 +125,8 @@ def addFriend(request):
             except:
                 return redirect(addFriend)
     return redirect(addFriend)
+
+def deleteMedia(request, mediaID):
+    media = Media.objects.get(pk=mediaID)
+    media.delete()
+    return redirect('viewMedia')

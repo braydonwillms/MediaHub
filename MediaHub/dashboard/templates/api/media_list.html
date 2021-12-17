@@ -8,6 +8,7 @@
       <li>
         {{ media.mediaTitle }}, {{ media.mediaRelease}}
       </li>
+      <a href="{% url 'deleteMedia' media.mediaID %}" class="btn btn-outline-danger btn-sm">Delete Media</a>
     {% endfor %}
   </ul>
   {% else %}
