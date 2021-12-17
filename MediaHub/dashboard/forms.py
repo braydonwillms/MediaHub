@@ -1,3 +1,4 @@
+from django.db.models.base import Model
 from django.forms import ModelForm, HiddenInput, CheckboxSelectMultiple
 from api.models import *
 
@@ -32,6 +33,16 @@ class editPlaylistForm(ModelForm):
             "playListContains": "Playlist Items"
         }
     
+class deleteMovieForm(ModelForm):
+    class Meta:
+        model = Movie 
+        fields = '__all__'
+        widgets = {
+            'mediaTitle': CheckboxSelectMultiple
+        }
+        labels = {
+            "mediaTitle" : "Movie Items"
+        }
 class addBookForm(ModelForm):
     class Meta:
         model = Book
