@@ -98,11 +98,7 @@ def updatePlaylist(request):
         return HttpResponseRedirect('/dashboard/viewPlaylists')
     return render(request, 'dashboard/editPlaylist.html', {'form':form})
 
-def deleteMovie(request):
-    movie_list = Media.objects.all()
-    return render(request, 'dashboard/deleteMovie.html', {'movie_list': movie_list})
-
-def delete_movie(request, mediaID):
-    movie = Media.objects.get(pk=mediaID)
-    movie.delete()
-    return redirect('deleteMovie')
+def deleteMedia(request, mediaID):
+    media = Media.objects.get(pk=mediaID)
+    media.delete()
+    return redirect('viewMedia')
