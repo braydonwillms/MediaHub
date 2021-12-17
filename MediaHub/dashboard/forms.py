@@ -14,3 +14,7 @@ class addPlaylistForm(ModelForm):
             'playListUser': HiddenInput(),
             'playListContains': CheckboxSelectMultiple
         }
+        labels= {
+            "playListName": "Name",
+            "playListContains": "Playlist Items"
+        }
