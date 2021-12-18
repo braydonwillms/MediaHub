@@ -1,4 +1,4 @@
-{% extends "baseDashboardPlaylist.html" %}
+{% extends "baseDashboardFriends.html" %}
 
 {% block content %}
   <h1>Friends</h1>
@@ -9,7 +9,7 @@
 		<ul>
 		{% for friend in user.friends.all %}
 			<li>
-				{{ friend.userID }}
+				{{ friend.userID }}, {{ friend.userName }}
 			</li>
 		{% endfor %}
 		</ul>
