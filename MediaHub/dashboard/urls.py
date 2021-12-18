@@ -8,6 +8,7 @@ urlpatterns = [
     path('manageShows/', views.manageShows, name='manageShows'),
     path('manageVideoGame/', views.manageVideoGames, name='manageVideoGames'),
     path('managePlaylists/', views.managePlaylists, name='managePlaylists'),
+    path('manageFriends/', views.manageFriends, name='manageFriends'),
     path('addMovie/', views.addMovie, name='addMovie'),
     path('addBook/', views.addBook, name='addBook'),
     path('addShow/', views.addShow, name='addShow'),
@@ -20,5 +21,7 @@ urlpatterns = [
     path('editPlaylist/', views.editPlaylist, name='editPlaylist'),
     path('updatePlaylist/', views.updatePlaylist, name='updatePlaylist'),
     path('addMovie/sucess/', views.sucessAdd, name='sucess'),
+    path('addFriend/', views.addFriend, name='addFriend'),
+    path('viewFriends/', views.viewFriends.as_view(), name='viewFriends'),
     path('deleteMedia/ <mediaID>', views.deleteMedia, name='deleteMedia')
 ]

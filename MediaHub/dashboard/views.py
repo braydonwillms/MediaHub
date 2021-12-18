@@ -23,7 +23,10 @@ def manageVideoGames(request):
     return render(request, 'dashboard/dashboardManageVideoGames.html')
 
 def managePlaylists(request):
-    return render(request, 'dashboard/dashboardManagePlaylists.html') 
+    return render(request, 'dashboard/dashboardManagePlaylists.html')
+
+def manageFriends(request):
+    return render(request, 'dashboard/dashboardManageFriends.html')
 
 def sucessAdd(request):
     return render(request, 'dashboard/sucess.html')
@@ -97,6 +100,31 @@ def updatePlaylist(request):
         form.save()
         return HttpResponseRedirect('/dashboard/viewPlaylists')
     return render(request, 'dashboard/editPlaylist.html', {'form':form})
+
+class viewFriends(generic.ListView):
+    model = User
+
+    def get_queryset(self):
+        username = self.request.session["username"]
+        return User.objects.filter(userID=username)
+
+def addFriend(request):
+    if request.method == 'GET':
+        return render(request, 'dashboard/addFriend.html', {"form":addFriendForm()})
+    if request.method == 'POST':
+        form = addFriendForm(request.POST)
+        if form.is_valid():
+            user = User.objects.get(userID=request.session["username"])
+            try:
+                user.friends.add(User.objects.get(userID=form.cleaned_data["friend_username"]))
+                user.save()
+                user2 = User.objects.get(userID=form.cleaned_data["friend_username"])
+                user2.friends.add(User.objects.get(userID=request.session["username"]))
+                user2.save()
+                return HttpResponseRedirect('/dashboard/manageFriends')
+            except:
+                return redirect(addFriend)
+    return redirect(addFriend)
 
 def deleteMedia(request, mediaID):
     media = Media.objects.get(pk=mediaID)

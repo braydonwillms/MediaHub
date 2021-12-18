@@ -1,5 +1,6 @@
 from django.db.models.base import Model
 from django.forms import ModelForm, HiddenInput, CheckboxSelectMultiple
+from django import forms
 from api.models import *
 
 class addMovieForm(ModelForm):
@@ -54,4 +55,5 @@ class addCategoryGenreForm(ModelForm):
         model = CategoryGenre
         fields = ['categoryGenreID', 'categoryGenreDescription']
 
-
+class addFriendForm(forms.Form):
+    friend_username = forms.CharField(max_length=50)

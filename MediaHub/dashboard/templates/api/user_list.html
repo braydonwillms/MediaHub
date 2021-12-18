@@ -1,0 +1,22 @@
+{% extends "baseDashboardPlaylist.html" %}
+
+{% block content %}
+  <h1>Friends</h1>
+  {% if user_list %}
+  <ul>
+    {% for user in user_list %}
+      <li>
+		<ul>
+		{% for friend in user.friends.all %}
+			<li>
+				{{ friend.userID }}
+			</li>
+		{% endfor %}
+		</ul>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>You do not have any friends.</p>
+  {% endif %}
+{% endblock %}
