@@ -1,4 +1,6 @@
+from django.core.validators import MinLengthValidator, MaxValueValidator
 from django.db.models.base import Model
+from django.db.models.query import QuerySet
 from django.forms import ModelForm, HiddenInput, CheckboxSelectMultiple
 from django import forms
 from api.models import *
@@ -71,6 +73,7 @@ class addWebsiteForm(ModelForm):
     class Meta:
         model = Website
         fields = '__all__'
+
 class suggestMediaForm(forms.Form):
     username = forms.CharField(max_length=50, widget=forms.HiddenInput())
 
@@ -79,3 +82,24 @@ class suggestMediaForm(forms.Form):
 
         self.fields["friend_username"] = forms.ModelChoiceField(queryset=User.objects.get(userID=name).friends.all())
         self.fields["media_suggestion"] = forms.ModelChoiceField(queryset=Media.objects.all())
+
+class addReviewForm(forms.Form):
+    username = forms.CharField(max_length=50, widget=forms.HiddenInput())
+    fRating = forms.IntegerField(label="Rating:",validators=[
+            MinValueValidator(0),
+            MaxValueValidator(100)    
+        ],
+        help_text="Enter a rating between 0-100")
+
+    def __init__(self, name, *args, **kwargs):
+        super(addReviewForm, self).__init__(*args, **kwargs)
+
+        self.fields['mediaName'] = forms.ModelChoiceField(queryset=Media.objects.all())
+    
+    fReview = forms.CharField(label="Review", widget=forms.Textarea(
+        attrs={
+            'rows': 10
+        }
+        ))
+    
+

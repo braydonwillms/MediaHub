@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
@@ -182,3 +183,27 @@ class viewSuggestions(generic.ListView):
     def get_queryset(self):
         username = self.request.session["username"]
         return Suggestions.objects.filter(suggesteeUserID=username)
+
+def addReview(request):
+    if request.method == 'POST':
+        form = addReviewForm(request.session['username'], request.POST)
+        if form.is_valid():
+            createReviewID = Review(rating=form.cleaned_data["fRating"], comment=form.cleaned_data["fReview"])
+            createReviewID.save()
+            rates = Rates(
+                rateUserID = User.objects.get(userID=form.cleaned_data["username"]),
+                rateReviewID = createReviewID,
+                rateMediaID = form.cleaned_data["mediaName"]
+            )
+            rates.save()
+            return redirect(dashboard)
+    form = addReviewForm(request.session["username"])
+    form.fields["username"].initial = request.session["username"]
+    return render(request, 'dashboard/addReview.html', {'form': form})
+
+class viewReviews(generic.ListView):
+    model = Rates
+
+    def get_queryset(self):
+        username = self.request.session["username"]
+        return Rates.objects.filter(rateUserID=username)

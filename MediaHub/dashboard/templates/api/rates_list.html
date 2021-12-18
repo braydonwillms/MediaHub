@@ -1,0 +1,18 @@
+{% extends "baseDashboard.html" %}
+
+{% block content %}
+  <h1>Things you've reviewed</h1>
+  {% if rate_list %}
+  <ul>
+    {% for rate in rate_list %}
+      <li>
+        {{ rate.rateMediaID.mediaTitle }}
+        {{ rate.rateReviewID.ReviewID.rating }}
+        {{ rate.rateReviewID.ReviewID.comment }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>You have no reviews.</p>
+  {% endif %}
+{% endblock %}

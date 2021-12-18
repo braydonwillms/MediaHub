@@ -78,7 +78,7 @@ class Review (models.Model):
             MinValueValidator(100)
         ]
     )
-    comment = TextField(default="No Review.")
+    comment = TextField()
 
 class User (models.Model):
     userID = CharField(max_length=50, primary_key=True)
