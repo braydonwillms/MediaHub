@@ -25,5 +25,7 @@ urlpatterns = [
     path('viewFriends/', views.viewFriends.as_view(), name='viewFriends'),
     path('deleteMedia/ <mediaID>', views.deleteMedia, name='deleteMedia'),
     path('suggestMedia/', views.suggestMedia, name='suggestMedia'),
-    path('viewSuggestions/', views.viewSuggestions.as_view(), name='viewSuggestions')
+    path('viewSuggestions/', views.viewSuggestions.as_view(), name='viewSuggestions'),
+    path('sharePlaylist/', views.sharePlaylist, name='sharePlaylist'),
+    path('viewSharedPlaylists/', views.viewSharedPlaylists.as_view(), name='viewSharedPlaylists'),
 ]
