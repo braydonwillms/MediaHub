@@ -2,14 +2,13 @@
 
 {% block content %}
   <h1>Things you've reviewed</h1>
-  {% if rate_list %}
+  {% if rates_list %}
   <ul>
-    {% for rate in rate_list %}
-      <li>
-        {{ rate.rateMediaID.mediaTitle }}
-        {{ rate.rateReviewID.ReviewID.rating }}
-        {{ rate.rateReviewID.ReviewID.comment }}
-      </li>
+    {% for rate in rates_list %}
+      <h2><li>{{ rate.rateMediaID.mediaTitle }}</li>
+      </h2>
+      <li>Rating: {{ rate.rateReviewID.rating }} </li>
+      <li>Comment: {{ rate.rateReviewID.comment }}</li>
     {% endfor %}
   </ul>
   {% else %}
