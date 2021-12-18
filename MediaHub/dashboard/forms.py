@@ -79,3 +79,12 @@ class suggestMediaForm(forms.Form):
 
         self.fields["friend_username"] = forms.ModelChoiceField(queryset=User.objects.get(userID=name).friends.all())
         self.fields["media_suggestion"] = forms.ModelChoiceField(queryset=Media.objects.all())
+
+class sharePlaylistForm(forms.Form):
+    username = forms.CharField(max_length=50, widget=forms.HiddenInput())
+
+    def __init__(self, name, *args, **kwargs):
+        super(sharePlaylistForm, self).__init__(*args, **kwargs)
+
+        self.fields["friend_username"] = forms.ModelChoiceField(queryset=User.objects.get(userID=name).friends.all())
+        self.fields["playlist_to_share"] = forms.ModelChoiceField(queryset=Playlist.objects.filter(playListUser=name))

@@ -32,4 +32,6 @@ urlpatterns = [
     path('viewPlatforms/', views.viewPlatforms.as_view(), name='viewPlatforms'),
     path('suggestMedia/', views.suggestMedia, name='suggestMedia'),
     path('viewSuggestions/', views.viewSuggestions.as_view(), name='viewSuggestions'),
+    path('sharePlaylist/', views.sharePlaylist, name='sharePlaylist'),
+    path('viewSharedPlaylists/', views.viewSharedPlaylists.as_view(), name='viewSharedPlaylists'),
 ]
