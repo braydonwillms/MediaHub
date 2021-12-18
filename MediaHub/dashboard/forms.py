@@ -71,3 +71,11 @@ class addWebsiteForm(ModelForm):
     class Meta:
         model = Website
         fields = '__all__'
+class suggestMediaForm(forms.Form):
+    username = forms.CharField(max_length=50, widget=forms.HiddenInput())
+
+    def __init__(self, name, *args, **kwargs):
+        super(suggestMediaForm, self).__init__(*args, **kwargs)
+
+        self.fields["friend_username"] = forms.ModelChoiceField(queryset=User.objects.get(userID=name).friends.all())
+        self.fields["media_suggestion"] = forms.ModelChoiceField(queryset=Media.objects.all())

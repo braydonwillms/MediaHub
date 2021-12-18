@@ -30,4 +30,6 @@ urlpatterns = [
     path('deleteMedia/ <mediaID> /', views.deleteMedia, name='deleteMedia'),
     path('deletePlatform/ <platformID> /', views.deletePlatform, name='deletePlatform'),
     path('viewPlatforms/', views.viewPlatforms.as_view(), name='viewPlatforms')
+    path('suggestMedia/', views.suggestMedia, name='suggestMedia'),
+    path('viewSuggestions/', views.viewSuggestions.as_view(), name='viewSuggestions')
 ]

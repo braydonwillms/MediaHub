@@ -162,3 +162,23 @@ def deletePlatform(request, platformID):
     platform = Platform.objects.get(pk=platformID)
     platform.delete()
     return redirect('viewPlatforms')
+
+def suggestMedia(request):
+    if request.method == 'POST':
+        form = suggestMediaForm(request.session["username"], request.POST)
+        if form.is_valid():
+            suggestion = Suggestions(suggestorsUserID=User.objects.get(userID=form.cleaned_data["username"]),
+                        suggesteeUserID=User.objects.get(userID=form.cleaned_data["friend_username"]),
+                        suggestedMediaID=form.cleaned_data["media_suggestion"])
+            suggestion.save()
+            return redirect(manageFriends)
+    form = suggestMediaForm(request.session["username"])
+    form.fields["username"].initial = request.session["username"]
+    return render(request, 'dashboard/suggestMedia.html', {'form': form})
+
+class viewSuggestions(generic.ListView):
+    model = Suggestions
+
+    def get_queryset(self):
+        username = self.request.session["username"]
+        return Suggestions.objects.filter(suggesteeUserID=username)

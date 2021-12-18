@@ -1,0 +1,16 @@
+{% extends "baseDashboard.html" %}
+
+{% block content %}
+  <h1>Suggested For You</h1>
+  {% if suggestions_list %}
+  <ul>
+    {% for suggestion in suggestions_list %}
+      <li>
+        {{ suggestion.suggestedMediaID }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Nobody has suggested anything for you.</p>
+  {% endif %}
+{% endblock %}
