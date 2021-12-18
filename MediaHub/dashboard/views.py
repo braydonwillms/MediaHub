@@ -31,6 +31,9 @@ def manageFriends(request):
 def managePlatforms(request):
     return render(request, 'dashboard/dashboardManagePlatforms.html')
 
+def manageOwnership(request):
+    return render(request, 'dashboard/dashboardManageOwnership.html')
+
 def sucessAdd(request):
     return render(request, 'dashboard/sucess.html')
 
@@ -202,3 +205,23 @@ class viewSharedPlaylists(generic.ListView):
     def get_queryset(self):
         username = self.request.session["username"]
         return Shares.objects.filter(sharedUserID=username)
+
+class viewOwnedMedia(generic.ListView):
+    model = Owns
+
+    def get_queryset(self):
+        username = self.request.session["username"]
+        return Owns.objects.filter(ownsUserID=username)
+
+def addOwnership(request):
+    if request.method == 'POST':
+        form = addOwnershipForm(request.POST)
+        if form.is_valid():
+            owns = Owns(ownsUserID=User.objects.get(userID=form.cleaned_data["username"]),
+                        ownsPlatformID=form.cleaned_data["platform"],
+                        ownsMediaID=form.cleaned_data["owned_media"])
+            owns.save()
+            return redirect(manageOwnership)
+    form = addOwnershipForm()
+    form.fields["username"].initial = request.session["username"]
+    return render(request, 'dashboard/addOwnership.html', {'form':form})

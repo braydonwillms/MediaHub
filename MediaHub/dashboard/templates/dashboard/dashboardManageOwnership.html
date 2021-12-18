@@ -47,7 +47,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href={% url 'managePlaylists' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-play-circle-o fa-fw"></i>  Manage Playlists</a>
     <a href={% url 'manageFriends' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Manage Friends</a>
     <a href={% url 'managePlatforms' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-cloud fa-fw"></i>  Manage Platform</a>
-    <a href={% url 'manageOwnership' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Manage My Owned Media</a>
+    <a href={% url 'manageOwnership' %} class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-eye fa-fw"></i>  Manage My Owned Media</a>
   </div>
 </nav>
 
@@ -60,43 +60,35 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> Manage Books</b></h5>
+    <h5><b><i class="fa fa-dashboard"></i>Manage Owned Media</b></h5>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
     
     <div class="w3-quarter">
-      <a href={% url 'addBook' %} style="text-decoration:none">
+      <a href={% url 'addOwnership' %} style="text-decoration:none">
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-book w3-xxxlarge"></i></div>
         <div class="w3-right">
         </div>
         <div class="w3-clear"></div>
-        <h4>Add Books</h4>
+        <h4>Enter Owned Media</h4>
       </div>
       </a>
     </div>
 
     <div class="w3-quarter">
+      <a href={% url 'viewOwnedMedia' %} style="text-decoration:none">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
         <div class="w3-right">
           <!-- <h3>99</h3> -->
         </div>
         <div class="w3-clear"></div>
-        <h4>Update Books</h4>
+        <h4>View Owned Media</h4>
       </div>
+      </a>
     </div>
-    <div class="w3-quarter">
-      <a href={% url 'viewMedia' %} style="text-decoration:none">
-      <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <!-- <h3>23</h3> -->
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Delete Books</h4>
-      </div>
     </div>
     
   </div>
