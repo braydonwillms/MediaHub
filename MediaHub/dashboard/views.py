@@ -28,6 +28,9 @@ def managePlaylists(request):
 def manageFriends(request):
     return render(request, 'dashboard/dashboardManageFriends.html')
 
+def managePlatforms(request):
+    return render(request, 'dashboard/dashboardManagePlatforms.html')
+
 def sucessAdd(request):
     return render(request, 'dashboard/sucess.html')
 
@@ -130,3 +133,32 @@ def deleteMedia(request, mediaID):
     media = Media.objects.get(pk=mediaID)
     media.delete()
     return redirect('viewMedia')
+
+def addPhysical(request):
+    form = addPhysicalForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(sucessAdd)
+    return render(request, 'dashboard/addPhysical.html', {'form': form})
+
+def addDevice(request):
+    form = addDeviceForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(sucessAdd)
+    return render(request, 'dashboard/addDevice.html', {'form': form})
+
+def addWebsite(request):
+    form = addWebsiteForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(sucessAdd)
+    return render(request, 'dashboard/addWebsite.html', {'form': form})
+
+class viewPlatforms(generic.ListView):
+    model = Platform
+
+def deletePlatform(request, platformID):
+    platform = Platform.objects.get(pk=platformID)
+    platform.delete()
+    return redirect('viewPlatforms')

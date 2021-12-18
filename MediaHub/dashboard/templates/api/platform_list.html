@@ -1,0 +1,17 @@
+{% extends "baseDashboardPlatforms.html" %}
+
+{% block content %}
+  <h1>Platform List</h1>
+  {% if platform_list %}
+  <ul>
+    {% for platform in platform_list %}
+      <li>
+        {{ platform.platformName }}
+      </li>
+      <a href="{% url 'deletePlatform' platform.platformID %}" class="btn btn-outline-danger btn-sm">Delete Platform</a>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no Platforms in the database.</p>
+  {% endif %}
+{% endblock %}

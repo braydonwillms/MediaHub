@@ -33,7 +33,6 @@ class editPlaylistForm(ModelForm):
         labels = {
             "playListContains": "Playlist Items"
         }
-    
 
 class addBookForm(ModelForm):
     class Meta:
@@ -57,3 +56,18 @@ class addCategoryGenreForm(ModelForm):
 
 class addFriendForm(forms.Form):
     friend_username = forms.CharField(max_length=50)
+
+class addPhysicalForm(ModelForm):
+    class Meta:
+        model = Physical
+        fields = ['platformName','platformHosts', 'physicalDescription']
+
+class addDeviceForm(ModelForm):
+    class Meta:
+        model = Device
+        fields = '__all__'
+
+class addWebsiteForm(ModelForm):
+    class Meta:
+        model = Website
+        fields = '__all__'
