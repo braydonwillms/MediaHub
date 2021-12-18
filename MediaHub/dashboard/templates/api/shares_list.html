@@ -1,0 +1,23 @@
+{% extends "baseDashboardPlaylist.html" %}
+
+{% block content %}
+  <h1>Shared Playlists</h1>
+  {% if shares_list %}
+  <ul>
+    {% for share in shares_list %}
+      <li>
+	      {{ share.sharedPlaylistID.playListName }} - {{share.sharedPlaylistID.playListUser}} 
+		<ul>
+		{% for media in share.sharedPlaylistID.playListContains.all %}
+			<li>
+				{{ media.mediaTitle }}
+			</li>
+		{% endfor %}
+		</ul>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No playlists have been shared with you.</p>
+  {% endif %}
+{% endblock %}

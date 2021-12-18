@@ -1,0 +1,16 @@
+{% extends "baseDashboardOwns.html" %}
+
+{% block content %}
+  <h1>Owned media</h1>
+  {% if owns_list %}
+  <ul>
+    {% for item in owns_list %}
+      <li>
+	      {{ item.ownsMediaID.mediaTitle }}, {{ item.ownsMediaID.mediaRelease }} - on {{ item.ownsPlatformID.platformName }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>You have not entered any owned media.</p>
+  {% endif %}
+{% endblock %}

@@ -32,6 +32,9 @@ def manageFriends(request):
 def managePlatforms(request):
     return render(request, 'dashboard/dashboardManagePlatforms.html')
 
+def manageOwnership(request):
+    return render(request, 'dashboard/dashboardManageOwnership.html')
+
 def sucessAdd(request):
     return render(request, 'dashboard/sucess.html')
 
@@ -207,3 +210,44 @@ class viewReviews(generic.ListView):
     def get_queryset(self):
         username = self.request.session["username"]
         return Rates.objects.filter(rateUserID=username)
+
+def sharePlaylist(request):
+    if request.method == 'POST':
+        form = sharePlaylistForm(request.session["username"], request.POST)
+        if form.is_valid():
+            share = Shares(creatorUserID=User.objects.get(userID=form.cleaned_data["username"]),
+                           sharedUserID=User.objects.get(userID=form.cleaned_data["friend_username"]),
+                           sharedPlaylistID=form.cleaned_data["playlist_to_share"])
+            share.save()
+            return redirect(managePlaylists)
+    form = sharePlaylistForm(request.session["username"])
+    form.fields["username"].initial = request.session["username"]
+    return render(request, 'dashboard/sharePlaylist.html', {'form': form})
+
+class viewSharedPlaylists(generic.ListView):
+    model = Shares
+
+    def get_queryset(self):
+        username = self.request.session["username"]
+        return Shares.objects.filter(sharedUserID=username)
+
+class viewOwnedMedia(generic.ListView):
+    model = Owns
+
+    def get_queryset(self):
+        username = self.request.session["username"]
+        return Owns.objects.filter(ownsUserID=username)
+
+def addOwnership(request):
+    if request.method == 'POST':
+        form = addOwnershipForm(request.POST)
+        if form.is_valid():
+            owns = Owns(ownsUserID=User.objects.get(userID=form.cleaned_data["username"]),
+                        ownsPlatformID=form.cleaned_data["platform"],
+                        ownsMediaID=form.cleaned_data["owned_media"])
+            owns.save()
+            return redirect(manageOwnership)
+    form = addOwnershipForm()
+    form.fields["username"].initial = request.session["username"]
+    return render(request, 'dashboard/addOwnership.html', {'form':form})
+

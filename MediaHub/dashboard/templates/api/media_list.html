@@ -1,14 +1,17 @@
 {% extends "baseDashboard.html" %}
-
 {% block content %}
   <h1>Media List</h1>
   {% if media_list %}
   <ul>
     {% for media in media_list %}
-      <li>
+      <p>
+        <li>
         {{ media.mediaTitle }}, {{ media.mediaRelease}}
+        <button type="button" class="btn btn-warning">
+          <a href="{% url 'deleteMedia' media.mediaID %}" class="btn btn-outline-danger">Delete Media</a>
+        </button>
       </li>
-      <a href="{% url 'deleteMedia' media.mediaID %}" class="btn btn-outline-danger btn-sm">Delete Media</a>
+      </p>
     {% endfor %}
   </ul>
   {% else %}

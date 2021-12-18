@@ -1,0 +1,14 @@
+{% extends "baseDashboardPlaylist.html" %}
+
+{% block content %}
+<div class="container">
+    <form method="POST">
+      <fieldset>
+        <legend>Share Playlist</legend>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </fieldset>
+    </form>
+</div>
+{% endblock %}

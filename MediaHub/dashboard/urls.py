@@ -10,6 +10,7 @@ urlpatterns = [
     path('managePlaylists/', views.managePlaylists, name='managePlaylists'),
     path('manageFriends/', views.manageFriends, name='manageFriends'),
     path('managePlatforms/', views.managePlatforms, name='managePlatforms'),
+    path('manageOwnership/', views.manageOwnership, name='manageOwnership'),
     path('addMovie/', views.addMovie, name='addMovie'),
     path('addBook/', views.addBook, name='addBook'),
     path('addShow/', views.addShow, name='addShow'),
@@ -34,4 +35,8 @@ urlpatterns = [
     path('viewSuggestions/', views.viewSuggestions.as_view(), name='viewSuggestions'),
     path('addReview/',views.addReview, name='addReview'),
     path('viewReviews/', views.viewReviews.as_view(), name='viewReviews'),
+    path('sharePlaylist/', views.sharePlaylist, name='sharePlaylist'),
+    path('viewSharedPlaylists/', views.viewSharedPlaylists.as_view(), name='viewSharedPlaylists'),
+    path('viewOwnedMedia/', views.viewOwnedMedia.as_view(), name='viewOwnedMedia'),
+    path('addOwnership/', views.addOwnership, name='addOwnership'),
 ]

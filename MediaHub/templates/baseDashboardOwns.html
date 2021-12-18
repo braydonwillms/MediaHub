@@ -35,6 +35,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </div> -->
     <div class="w3-col s8 w3-bar">
 	    <span>Welcome, <strong>{{ name }}</strong></span><br>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
     </div>
   </div>
   <hr>
@@ -43,16 +46,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href={% url 'dashboard' %} class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Overview</a>
+    <a href={% url 'dashboard' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-home fa-fw"></i>  Overview</a>
     <a href={% url 'viewMedia' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-comment fa-fw"></i>  View Media</a>
-    <a href={% url 'manageMovies' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-film fa-fw"></i>  Manage Movies</a>
+    <a href={% url 'manageMovies' %} class="w3-bar-item w3-button w3-padding" ><i class="fa fa-film fa-fw"></i>  Manage Movies</a>
     <a href={% url 'manageBooks' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-book fa-fw"></i>  Manage Books</a>
-    <a href={% url 'manageShows' %}  class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>  Manage Shows</a>
+    <a href={% url 'manageShows' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-tv fa-fw"></i>  Manage Shows</a>
     <a href={% url 'manageVideoGames' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-gamepad fa-fw"></i>  Manage Video Games</a>
     <a href={% url 'managePlaylists' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-play-circle fa-fw"></i>  Manage Playlists</a>
     <a href={% url 'manageFriends' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Manage Friends</a>
     <a href={% url 'managePlatforms' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-cloud fa-fw"></i>  Manage Platforms</a>
-    <a href={% url 'manageOwnership' %} class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Manage My Owned Media</a>
+    <a href={% url 'manageOwnership' %} class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-eye fa-fw"></i>  Manage My Owned Media</a>
   </div>
 </nav>
 
@@ -64,60 +67,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
   <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
-  </header>
+  <!-- <header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> Manage Movies</b></h5>
+  </header> -->
 
   <div class="w3-row-padding w3-margin-bottom">
-    <div class="w3-quarter">
-      <a href={% url 'addCategoryGenre' %} style="text-decoration:none" >
-      <div class="w3-container w3-red w3-padding-16">
-        <div class="w3-left"><i class="fa fa-optin-monster w3-xxxlarge"></i></div>
-        <div class="w3-right">
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Add Categories / Genre</h4>
-      </div>
-    </a> 
-    </div>
-    <div class="w3-quarter">
 
-      <a href={% url 'addReview' %} style="text-decoration:none">
-      <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-address-book w3-xxxlarge"></i></div>
-        <div class="w3-right">
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Add Review</h4>
-      </div>
-      </a>
-    </div>
-    
-    <div class="w3-quarter">
-      <a href={% url 'viewReviews' %} style="text-decoration:none">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-cog w3-xxxlarge"></i></div>
-        <div class="w3-right">
-        </div>
-        <div class="w3-clear"></div>
-        <h4>View Reviews</h4>
-      </div>
-      </a>
-    </div>
-
-
-    <div class="w3-quarter">
-      <a href={% url 'manageFriends' %} style="text-decoration:none">
-      <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
-        <div class="w3-right">
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Manage Friends</h4>
-      </div>
-      </a>
-    </div>
+    {% block content %}{% endblock %}
   </div>
+
   <!-- End page content -->
 </div>
 
