@@ -81,23 +81,36 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     </a> 
     </div>
     <div class="w3-quarter">
-      <a href={% url 'managePlatforms' %} style="text-decoration:none">
+
+      <a href={% url 'addReview' %} style="text-decoration:none">
       <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+        <div class="w3-left"><i class="fa fa-address-book w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <!-- <h3>99</h3> -->
         </div>
         <div class="w3-clear"></div>
-        <h4>Manage Platform</h4>
+        <h4>Add Review</h4>
       </div>
-    </a>
+      </a>
     </div>
+    
+    <div class="w3-quarter">
+      <a href={% url 'viewReviews' %} style="text-decoration:none">
+      <div class="w3-container w3-orange w3-text-white w3-padding-16">
+        <div class="w3-left"><i class="fa fa-cog w3-xxxlarge"></i></div>
+        <div class="w3-right">
+        </div>
+        <div class="w3-clear"></div>
+        <h4>View Reviews</h4>
+      </div>
+      </a>
+    </div>
+
+
     <div class="w3-quarter">
       <a href={% url 'manageFriends' %} style="text-decoration:none">
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <!-- <h3>23</h3> -->
         </div>
         <div class="w3-clear"></div>
         <h4>Manage Friends</h4>
